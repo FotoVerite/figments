@@ -1,0 +1,165 @@
+{
+"events": [
+        {
+            "eventType": "event",
+            "kickoff": "levelStart",
+            "skip": true,
+            "startWave": false, 
+            "nextEvent": "waitForFireEvent",
+            "remove": true,
+            "screens":
+                [
+                    {"character": "???", "text": "I don't know about this Suz."},
+                    {"character": "Suz", "text": "Whut? It's going to be fun."},
+                    {"character": "???", "text": "It feels weird wearing this blindfold. And I'm hot. Is there no shade in your back yard?"},
+                    {"character": "Suz", "text": "You're the one who said they were bored of Monopoly, Virgil."},
+                    {"character": "Virgil", "text": "Everyone is bored of Monopoly. It's a bad game."},
+                    {"character": "Suz", "text": "So humor me and help me figure out my game."},
+                    {"character": "Virgil", "text": "Why don't you ask your Mom."},                    
+                    {"character": "Suz", "text": "She doesn't want to. She is a bit of a stick in the mud."},                    
+                    {"character": "Virgil", "text": "Your Mom is just smarter then me."},                    
+                    {"character": "Suz", "text": "Shut it!", "sfx": "alert"},
+                    {"character": "Virgil", "text": "What, what does even that mean?"},
+                    {"character": "Suz", "text": "Shhh... I'm setting the atmosphere here."},
+                    {"character": "Virgil", "text": "Where is here? What am I doing?"},                    
+                    {"character": "Suz", "text": "Warning incoming astroid field. Evasive manuevers needed."}, 
+                    {"character": "Virgil", "text": "Wait, I'm in space? Astroids?"}, 
+                    {"character": "Suz", "text": "Your are going to need to use the radar. Listen for the ping and figure out the direction.", "sfx": "ping"}, 
+                    {"character": "Virgil", "text": "Suz this is rediculous. How can I locate anything by radar. I don't have radar. I can't see anything!"}, 
+                    {"character": "Suz", "text": "Just listen for the ping and tap the bottom of the input screen to fire.", "sfx": "ping"}, 
+                    {"character": "Virgil", "text": "What screen?"},    
+                    {"character": "Suz", "text": "Just point your finger and say bang. Gah you're ruining the immersion."}                    
+                ]
+        },
+        {
+            "eventType": "event",
+            "kickoff": "fireEvent",
+            "skip": true,
+            "startWave": false, 
+            "nextEvent": "radarTutorial",
+            "skipToEvent": "radarSuccess",
+            "remove": true,
+            "screens":
+                [
+                    {"character": "Virgil", "text": "Fine... Bang."},
+                    {"character": "Suz", "text": "You could try a little harder. Here use this."},
+                    {"character": "Virgil", "text": "What are you putting around my face!"},
+                    {"character": "Suz", "text": "Stop being a baby, it's just a tin can. Just just again"},
+                    {"character": "Virgil", "text": "Ugh, Bang.", "sfx": "bang_fuzz"},                    
+                    {"character": "Suz", "text": "There we go."},                    
+                    {"character": "Virgil", "text": "Suz I don't know anything about this game. How do I even move."},
+                    {"character": "Suz", "text": "Just tilt the control screen to move left and right"},
+                    {"character": "Virgil", "text": "I do not have  a control screen! What do you act like it's a mobile app."},
+                    {"character": "Suz", "text": "Cause saying walk seems less ship like?"},
+                    {"character": "Virgil", "text": "Girl you confusing me right now. Fine so I walk?"},                    
+                    {"character": "Suz", "text": "You tilt the screen."},
+                    {"character": "Virgil", "text": "Fine... I tilt the screen."},
+                    {"character": "Suz", "text": "Now try to hit this astroid."}
+                ]
+        },
+        {
+            "eventType": "event",
+            "kickoff": "shotLeft",
+            "skip": false,
+            "remove": false,            
+            "startWave": false, 
+            "nextEvent": "radarTutorial",
+            "screens":
+                [
+                    {"character": "Suz", "text": "More to the right."}
+                ]
+        },
+        {
+            "eventType": "event",
+            "kickoff": "shotRight",
+            "skip": false,
+            "remove": false,                        
+            "startWave": false, 
+            "nextEvent": "radarTutorial",
+            "screens":
+                [
+                    {"character": "Suz", "text": "More to the left."}
+                ]
+        },
+        {
+            "eventType": "event",
+            "kickoff": "radarSuccess",
+            "skip": true,
+            "remove": true,                        
+            "startWave": true, 
+            "nextEvent": "astroidField",
+            "screens":
+                [
+                    {"character": "Suz", "text": "Got it!"},
+                    {"character": "Virgil", "text": "I did? You just said bang."},
+                    {"character": "Suz", "text": "More incoming!"}
+                    
+                ]
+        },
+        {
+            "eventType": "event",
+            "kickoff": "playerHit",
+            "skip": true,
+            "remove": true,                        
+            "startWave": true, 
+            "nextEvent": "astroidField",
+            "screens":
+                [
+                    {"character": "Suz", "text": "Watch it!"},
+                    {"character": "Virgil", "text": "Did you just hit me with an ice cube?"},   
+                    {"character": "Suz", "text": "It's an astroid."},
+                    {"character": "Virgil", "text": "It's cold."},
+                    {"character": "Suz", "text": "It's an ice astroid."}
+                ]
+        },
+        {
+            "eventType": "event",
+            "kickoff": "shakeEvent",
+            "skip": true,
+            "remove": true,                        
+            "startWave": true, 
+            "nextEvent": "",
+            "screens":
+                [
+                    {"character": "Virgil", "text": "Whaaa, stop shaking me!"},
+                    {"character": "Suz", "text": "You are going to fall into a pit"},   
+                    {"character": "Virgil", "text": "You're the one who made up this stupid game."},
+                    {"character": "Suz", "text": "It's not stupid, we just need to work out a few issues."}
+                ]
+        },
+        {
+            "eventType": "timeCode",
+            "kickoff": "none",
+            "timeCode": 45,
+            "skip": false,
+            "remove": true,                        
+            "startWave": true, 
+            "nextEvent": "astroidField",
+            "screens":
+                [
+                    {"character": "Virgil", "text": "How much more of this."},
+                    {"character": "Suz", "text": "Around 43.45 seconds till we are clear of the field."},
+                    {"character": "Virgil", "text": "That's oddly specific"}
+                ]
+        },
+        {
+            "eventType": "event",
+            "kickoff": "levelEnd",
+            "skip": false,
+            "remove": true,                        
+            "startWave": false, 
+            "nextEvent": "nextLevel",
+            "screens":
+                [
+                    {"character": "Virgil", "text": "Okay... this isn't fun."},
+                    {"character": "Suz", "text": "Give it a chance. You've one played for a minute and a half. I've been working on this for weeks."},   
+                    {"character": "Virgil", "text": "For a week, in your backyard, with your dad. Who never wants to say anything..."},
+                    {"character": "Suz", "text": "It's not stupid, we just need to work out a few issues."},
+                    {"character": "Virgil", "text": "Chill."},
+                    {"character": "Suz", "text": "You called it stupid."},
+                    {"character": "Virgil", "text": "I didn't. I said it wasn't fun. There's not enough challenge."},
+                    {"character": "Suz", "text": "Oh you want challenge. Just give me a day. Imma going to show you challenge."}
+                ]
+        }
+    ]
+}

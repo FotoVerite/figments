@@ -1,0 +1,138 @@
+{
+    "events": [
+            {
+                "eventType": "event",
+                "kickoff": "levelStart",
+                "skip": true,
+                "startWave": false, 
+                "nextEvent": "enemyFireTutorial",
+                "remove": true,
+                "screens":
+                    [
+                        {"character": "Virgil", "text": "I can't believe I'm doing this again."},                    
+                        {"character": "Suz", "text": "Well you are here, so stop spekaing rhetorically."},
+                        {"character": "Virgil", "text": "Ummm... I don't understand."}, 
+                        {"character": "Suz", "text": "I got you around my little finger boyo."},
+                        {"character": "Suz", "text": "DUCK!", "sfx": "pew"},
+                        {"character": "Virgil", "text": "Ugh what is that... ice water."},
+                        {"character": "Suz", "text": "Well you wanted more of a challenge. Now we got ships that fire."},
+                        {"character": "Virgil", "text": "Greaat."},
+                        {"character": "Suz", "text": "Don't worry I've got new toys for you too. CATCH"},                        
+                        {"character": "Virgil", "text": "Ahh, what is wrong with you. I CAN'T SEE."},
+                        {"character": "Suz", "text": "I was joking, I not going to throw anything heavy at you."},
+                        {"character": "Virgil", "text": "But you will throw ice."},
+                        {"character": "Suz", "text": "And other stuff. Here"},
+                        {"character": "Virgil", "text": "Ummm... is this, what is this. Is this an umbrella"},
+                        {"character": "Suz", "text": "It's your shield."},
+                        {"character": "Virgil", "text": "It's an umbrella."},
+                        {"character": "Suz", "text": "It's your shield. To defend you against the enemie's lazers."},
+                        {"character": "Virgil", "text": "Wait what is firing at me?"}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "shieldNotRaised",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "enemyFireTutorial",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Virgil", "text": "Ugh. Stop shooting me."},                    
+                        {"character": "Suz", "text": "Raise the shield stupid. That's why it's there."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "shieldRaised",
+                "skip": false,
+                "startWave": true, 
+                "nextEvent": "",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "Good job."},                    
+                        {"character": "Virgil", "text": "Ah... it snapped back"},
+                        {"character": "Suz", "text": "Of course, a shield can't last for ever."},   
+                        {"character": "Virgil", "text": "Did you put a rubberband on it?"},
+                        {"character": "Suz", "text": "It's a timer. Get ready!"}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "firedWithShieldRaised",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Virgil", "text": "Can I not shoot with the shield raised"},
+                        {"character": "Suz", "text": "Well I can't see your finger with the umbrella in the way."},
+                        {"character": "Virgil", "text": "That isn't fair."}
+                    ]
+            },
+            {
+                "eventType": "timeCode",
+                "kickoff": "none",
+                "timeCode": 60,
+                "skip": false,
+                "remove": true,                        
+                "startWave": true, 
+                "nextEvent": "firedWithShieldRaised",
+                "screens":
+                    [
+                        {"character": "Suz", "text": "How are you finding it?"},
+                        {"character": "Virgil", "text": "This is too much information I can't keep track of the astroids and the lazers."},
+                        {"character": "Suz", "text": "Really. I find it easy."},
+                        {"character": "Virgil", "text": "Well you made the game. Of course you find it easy."},
+                        {"character": "Suz", "text": "Okay fine.", "sfx": "kapow_fuzz"},
+                        {"character": "Virgil", "text": "What did you just do?"},
+                        {"character": "Suz", "text": "I simplified it for you. You're lazers blew up. Only shields now."},
+                        {"character": "Virgil", "text": "..."},
+                        {"character": "Suz", "text": "You're welcome."}
+                    ]
+            },
+            {
+                "eventType": "timeCode",
+                "kickoff": "none",
+                "timeCode": 30,
+                "skip": false,
+                "remove": true,                        
+                "startWave": true, 
+                "nextEvent": "firedWithShieldRaised",
+                "screens":
+                    [
+                        {"character": "Suz", "text": "Having fun now?"},
+                        {"character": "Virgil", "text": "Well you are."},
+                        {"character": "Suz", "text": "I'm just enjoying somebody playing my game."},
+                        {"character": "Virgil", "text": "Torture game."},
+                        {"character": "Suz", "text": "You just need to breath and listen."},
+                        {"character": "Virgil", "text": "Why can't I use my eyes."},
+                        {"character": "Suz", "text": "Because I don't want you too."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "levelEnd",
+                "skip": false,
+                "remove": true,                        
+                "startWave": false, 
+                "nextEvent": "nextLevel",
+                "screens":
+                    [
+                        {"character": "Virgil", "text": "Okay... this still isn't fun."},
+                        {"character": "Suz", "text": "That's because you're not trying to have fun."},   
+                        {"character": "Virgil", "text": "Girl, I'm trying here but it's not."},
+                        {"character": "Suz", "text": "You just constantly complain and nit pick."},
+                        {"character": "Virgil", "text": "I'm just telling you how it's playing."},
+                        {"character": "Suz", "text": "Well play it differently."},
+                        {"character": "Virgil", "text": "Girl... don't hate the player hate the game."},
+                        {"character": "Suz", "text": "Hahaha... you were aching to figure out how to drop that lame line."},
+                        {"character": "Virgil", "text": "Most fun I had so far."},
+                        {"character": "Suz", "text": "Okay Virgil Cage, I think I have an idea for a game."},
+                        {"character": "Virgil", "text": "Sure, I'll believe it when I play it."}
+                    ]
+            }
+        ]
+    }

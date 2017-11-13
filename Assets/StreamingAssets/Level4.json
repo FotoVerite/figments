@@ -1,0 +1,168 @@
+{
+    "events": [
+            {
+                "eventType": "event",
+                "kickoff": "levelStart",
+                "skip": true,
+                "startWave": false, 
+                "nextEvent": "ghostsComeOUt",
+                "remove": true,
+                "screens":
+                    [
+                        {"character": "Virgil", "text": "Hahahahahha"},                    
+                        {"character": "Suz", "text": "Okay?"},
+                        {"character": "Virgil", "text": "Mahahahahahhahahahahhahahha."}, 
+                        {"character": "Suz", "text": "Okay...."},
+                        {"character": "Virgil", "text": "Mahahahaa.", "sfx": "spooky_music"}, 
+                        {"character": "Suz", "text": "Any time now."},
+                        {"character": "Virgil", "text": "Setting the vibe here."},
+                        {"character": "Suz", "text": "Okay."},
+                        {"character": "Virgil", "text": "So.. Um."},
+                        {"character": "Suz", "text": "You need to tell me how to play."},
+                        {"character": "Virgil", "text": "So you are stuck in a evil digusting dank dungeon and you need to battle gnarly ghosts."},
+                        {"character": "Suz", "text": "Why?"},
+                        {"character": "Virgil", "text": "Because they're going to rip your body to pieces and floss with your organs. Obviously."},
+                        {"character": "Suz", "text": "You always were the dramatic one."},
+                        {"character": "Virgil", "text": "Girl."},
+                        {"character": "Suz", "text": "How do I defend myself."},                        
+                        {"character": "Virgil", "text": "So each ghost makes a different howl."},
+                        {"character": "Virgil", "text": "Bane, roars.", "sfx": "roar" },
+                        {"character": "Virgil", "text": "Illus howls.", "sfx": "howls" },
+                        {"character": "Virgil", "text": "The Mourning Wraith humms.", "sfx": "hum" },
+                        {"character": "Suz", "text": "Hums?"},                        
+                        {"character": "Virgil", "text": "Let me finish."},
+                        {"character": "Suz", "text": "Hums?"},                        
+                        {"character": "Virgil", "text": "I'm trying to make them sound different."},
+                        {"character": "Virgil", "text": "And Grimace taps along the stone with his pointy feet.", "sfx": "tap" },
+                        {"character": "Suz", "text": "Spooky."},                        
+                        {"character": "Virgil", "text": "Make sense?"},
+                        {"character": "Suz", "text": "Yup? So how do I make sure that they don't eat me."},                        
+                        {"character": "Virgil", "text": "Well Bane always comes in from the Right so you just have to brace that door till he stops roaring."},
+                        {"character": "Suz", "text": "And Illus"},                        
+                        {"character": "Virgil", "text": "He comes from the left."},
+                        {"character": "Suz", "text": "A huh. And Grimace taps in from the ceiling."},                        
+                        {"character": "Virgil", "text": "No, you just need to be perfectly still for Grimace."},
+                        {"character": "Virgil", "text": "Finally you need to make the sign of the cross when the Mouring Wraiths are around."},
+                        {"character": "Suz", "text": "So they're not smart enough to attack me together."},
+                        {"character": "Virgil", "text": "They're hungry. They don't want to share."},
+                        {"character": "Suz", "text": "So let me make sure I have this."},
+                        {"character": "Suz", "text": "Roar right, howls left, hum make a cross and taps I just basically twiddle my thumbs."},
+                        {"character": "Virgil", "text": "Okay, lets try this. Lets see if you can survive Virgils crypt for three minutes."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "eatenBane",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "gameOver",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Virgil", "text": "...", "sfx": "close_roar"},                    
+                        {"character": "Suz", "text": "Am I dead?"},
+                        {"character": "Virgil", "text": "Yup, you're not very delicious I'm being told.", "sfx": "crunch"},
+                        {"character": "Suz", "text": "Great, I'll be sure to season myself up for the next game."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "eatenIllus",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "gameOver",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Virgil", "text": "...", "sfx": "crunch"},                    
+                        {"character": "Suz", "text": "Oh no I have been eaten."},
+                        {"character": "Virgil", "text": "More of a nosh. You stringy.", "sfx": "crunch"}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "eatenWraith",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "gameOver",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Virgil", "text": "...", "sfx": "hum_loud"},                    
+                        {"character": "Suz", "text": "Amd I dead?"},
+                        {"character": "Virgil", "text": "No, not this time. but driven to maddness by the Wraiths", "sfx": "crunch"}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "eatenGrimace",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "gameOver",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Virgil", "text": "...", "sfx": "snap"},                    
+                        {"character": "Suz", "text": "Ahhh, my arm."},
+                        {"character": "Virgil", "text": "nice add libbing.", "sfx": "crunch"}
+                    ]
+            },
+            {
+                "eventType": "timeCode",
+                "kickoff": "none",
+                "timeCode": 100,
+                "skip": false,
+                "remove": true,                        
+                "startWave": true, 
+                "nextEvent": "ghostsGetFaster",
+                "screens":
+                    [
+                        {"character": "Suz", "text": "This is pretty easy."},
+                        {"character": "Virgil", "text": "That's because they're giving you a lot of breathing room. They're getting hungry", "sfx": "growls"},
+                        {"character": "Suz", "text": "That is really sorryful growl Vrigl. How big are these ghosts."},
+                        {"character": "Virgil", "text": "Maybe I'll just have one chomp down on you anyway."},
+                        {"character": "Suz", "text": "Oh... No..."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "levelEnd",
+                "skip": false,
+                "remove": true,                        
+                "startWave": false, 
+                "nextEvent": "nextLevel",
+                "screens":
+                    [
+                        {"character": "Virgil", "text": "Chomp...", "sfx": "chomp"},
+                        {"character": "Suz", "text": "What, huh."},   
+                        {"character": "Virgil", "text": "Monsta got you. You died. You were delicious."},
+                        {"character": "Suz", "text": "You can't just do that. I didn't lose."},
+                        {"character": "Virgil", "text": "My game, my rules. You lose."},
+                        {"character": "Suz", "text": "It's not even a good game."},
+                        {"character": "Virgil", "text": "It's better then yours."},
+                        {"character": "Suz", "text": "That's because you stole the mechanics from Five Night's at Freddys"},
+                        {"character": "Virgil", "text": "No I didn't. They had haunted costumes. I just have monsters and ghosts."},
+                        {"character": "Suz", "text": "And how can I be scared while standing out in the bright sunlight with crickets in my ears."},
+                        {"character": "Virgil", "text": "You're blind-folded."},
+                        {"character": "Suz", "text": "It's not that great of a blindfold. I couldn't steal my father's sleep mask."},
+                        {"character": "Virgil", "text": "That's not my fault."},
+                        {"character": "Suz", "text": "The game's not innovative."},
+                        {"character": "Virgil", "text": "You did a space shooter."},
+                        {"character": "Suz", "text": "Okay, true."},
+                        {"character": "Virgil", "text": "What's with this crappy blindfold anyway. It makes things so much harder."},
+                        {"character": "Suz", "text": "Because limitations creates good art... and I can't draw."},
+                        {"character": "Virgil", "text": "You never will if you don't start."},
+                        {"character": "Suz", "text": "I can make a fun game. I just need time. figuring out what works."},
+                        {"character": "Virgil", "text": "And me being bored out of my mind."},
+                        {"character": "Suz", "text": "Well then don't help me."},
+                        {"character": "Virgil", "text": "If you just stopped being so snide at me. It's your project."},
+                        {"character": "Suz", "text": "Okay. Listening."},
+                        {"character": "Virgil", "text": "I don't know... world building. Maybe work on the setting more to help feel like you are there."},
+                        {"character": "Virgil", "text": "Like you were just talking about."},
+                        {"character": "Suz", "text": "I don't know. That's hard. I'll just bore you narration."},
+                        {"character": "Virgil", "text": "I mean it's an idea."},
+                        {"character": "Suz", "text": "Okay I'll think about that."}
+                    ]
+            }
+        ]
+    }
