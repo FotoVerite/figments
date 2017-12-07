@@ -51,7 +51,7 @@
                 "remove": false,
                 "screens":
                     [
-                        {"character": "Suz", "text": "Good job."},                    
+                        {"character": "Suz", "text": "Good job.", "sfx": "SFX/shield_lower"},                    
                         {"character": "Virgil", "text": "Ah... it snapped back"},
                         {"character": "Suz", "text": "Of course, a shield can't last for ever."},   
                         {"character": "Virgil", "text": "Did you put a rubberband on it?"},
@@ -62,9 +62,9 @@
                 "eventType": "event",
                 "kickoff": "firedWithShieldRaised",
                 "skip": false,
-                "startWave": false, 
+                "startWave": true, 
                 "nextEvent": "",
-                "remove": false,
+                "remove": true,
                 "screens":
                     [
                         {"character": "Virgil", "text": "Can I not shoot with the shield raised"},
@@ -79,7 +79,7 @@
                 "skip": false,
                 "remove": true,                        
                 "startWave": true, 
-                "nextEvent": "firedWithShieldRaised",
+                "nextEvent": "",
                 "screens":
                     [
                         {"character": "Suz", "text": "How are you finding it?"},
@@ -100,7 +100,7 @@
                 "skip": false,
                 "remove": true,                        
                 "startWave": true, 
-                "nextEvent": "firedWithShieldRaised",
+                "nextEvent": "",
                 "screens":
                     [
                         {"character": "Suz", "text": "Having fun now?"},

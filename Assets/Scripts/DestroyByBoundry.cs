@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class DestroyByBoundry : MonoBehaviour {
 
-	GameController gameController;
+	Spawner spawner;
 	void Awake(){
-		gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+		spawner = GameObject.FindWithTag("GameController").GetComponent<Spawner>();
 	}
 
 	void OnTriggerExit(Collider other)
 	{
 		Destroy(other.gameObject);
-		gameController.instantiateHazards.Remove(other.gameObject);
+		spawner.instantiateHazards.Remove(other.gameObject);
 	}
 }

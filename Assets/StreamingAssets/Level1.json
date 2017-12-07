@@ -18,15 +18,15 @@
                     {"character": "Virgil", "text": "Why don't you ask your Mom."},                    
                     {"character": "Suz", "text": "She doesn't want to. She is a bit of a stick in the mud."},                    
                     {"character": "Virgil", "text": "Your Mom is just smarter then me."},                    
-                    {"character": "Suz", "text": "Shut it!", "sfx": "alert"},
-                    {"character": "Virgil", "text": "What, what does even that mean?"},
-                    {"character": "Suz", "text": "Shhh... I'm setting the atmosphere here."},
+                    {"character": "Suz", "text": "Shut it!", "sfx": "SFX/alarm", "musicVolume": 0.02 },
+                    {"character": "Virgil", "text": "What, what does even that mean? How are you doing that?"},
+                    {"character": "Suz", "text": "Shhh... I'm setting the atmosphere here. And phone can be very useful for voice minipulation."},
                     {"character": "Virgil", "text": "Where is here? What am I doing?"},                    
                     {"character": "Suz", "text": "Warning incoming astroid field. Evasive manuevers needed."}, 
                     {"character": "Virgil", "text": "Wait, I'm in space? Astroids?"}, 
-                    {"character": "Suz", "text": "Your are going to need to use the radar. Listen for the ping and figure out the direction.", "sfx": "ping"}, 
+                    {"character": "Suz", "text": "Your are going to need to use the radar. Listen for the ping and figure out the direction.", "sfx": "SFX/ping"}, 
                     {"character": "Virgil", "text": "Suz this is rediculous. How can I locate anything by radar. I don't have radar. I can't see anything!"}, 
-                    {"character": "Suz", "text": "Just listen for the ping and tap the bottom of the input screen to fire.", "sfx": "ping"}, 
+                    {"character": "Suz", "text": "Just listen for the ping and tap the bottom of the input screen to fire.", "sfx": "SFX/ping"}, 
                     {"character": "Virgil", "text": "What screen?"},    
                     {"character": "Suz", "text": "Just point your finger and say bang. Gah you're ruining the immersion."}                    
                 ]
@@ -45,7 +45,7 @@
                     {"character": "Suz", "text": "You could try a little harder. Here use this."},
                     {"character": "Virgil", "text": "What are you putting around my face!"},
                     {"character": "Suz", "text": "Stop being a baby, it's just a tin can. Just just again"},
-                    {"character": "Virgil", "text": "Ugh, Bang.", "sfx": "bang_fuzz"},                    
+                    {"character": "Virgil", "text": "Ugh, Bang.", "sfx": "SFX/bang_flange"},                    
                     {"character": "Suz", "text": "There we go."},                    
                     {"character": "Virgil", "text": "Suz I don't know anything about this game. How do I even move."},
                     {"character": "Suz", "text": "Just tilt the control screen to move left and right"},
@@ -92,7 +92,7 @@
                 [
                     {"character": "Suz", "text": "Got it!"},
                     {"character": "Virgil", "text": "I did? You just said bang."},
-                    {"character": "Suz", "text": "More incoming!"}
+                    {"character": "Suz", "text": "More incoming!", "music": "Music/space"}
                     
                 ]
         },
@@ -129,7 +129,7 @@
         },
         {
             "eventType": "timeCode",
-            "kickoff": "none",
+            "kickoff": "timeRemaining",
             "timeCode": 45,
             "skip": false,
             "remove": true,                        

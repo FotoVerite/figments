@@ -8,6 +8,7 @@ public class DestroyByContact : MonoBehaviour
 	public int scoreValue;
 
 	private GameController gameController;
+	private Spawner spawner;
 	private PlayerController playerController;
 
 	void Start()
@@ -16,6 +17,8 @@ public class DestroyByContact : MonoBehaviour
 		if (gameControllerObject != null)
 		{
 			gameController = gameControllerObject.GetComponent<GameController>();
+			spawner = gameControllerObject.GetComponent<Spawner>();
+
 		}
 		if (gameController == null)
 		{
@@ -48,9 +51,11 @@ public class DestroyByContact : MonoBehaviour
 		{
 			if(gameObject.tag == "EnemyShotTutorial") {
 				gameController.levelEvent = "shieldRaised";
+				playerController.StopCoroutine("shutdownSheild");
+				playerController.shield.SetActive(false);
 			}
-			if(gameController.instantiateHazards.Contains(gameObject)) {
-				gameController.instantiateHazards.Remove(gameObject);
+			if(spawner.instantiateHazards.Contains(gameObject)) {
+				spawner.instantiateHazards.Remove(gameObject);
 			}
 			gameController.AddScore(scoreValue);
 			Destroy(gameObject);
@@ -74,7 +79,7 @@ public class DestroyByContact : MonoBehaviour
 				Instantiate(explosion, transform.position, transform.rotation);
 				return;
 			}
-			gameController.instantiateHazards.Remove(gameObject);
+			spawner.instantiateHazards.Remove(gameObject);
 			playerController.hitPoints--;
 			if(playerController.hitPoints == 0){
 				//Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
@@ -92,7 +97,7 @@ public class DestroyByContact : MonoBehaviour
 		
 		else{ 
 			gameController.AddScore(scoreValue);
-			gameController.instantiateHazards.Remove(gameObject);
+			spawner.instantiateHazards.Remove(gameObject);
 			Destroy(other.gameObject);
 			Destroy(gameObject);
 			return;

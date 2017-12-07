@@ -15,10 +15,10 @@ public class ScreenController : MonoBehaviour
     public string startWaveOverride;
     private AudioSource soundPlayer;
     private GameController gameController;
+    private Spawner spawner;
 
     private ScriptInfo scriptInfo;
     private LevelScriptEvent nextEvent;
-    private int levelNumber;
     private bool fastForward = false;
     private string sceneName;
 
@@ -28,8 +28,8 @@ public class ScreenController : MonoBehaviour
     {
         soundPlayer = GetComponent<AudioSource>();
         gameController = GetComponent<GameController>();
+        spawner = GetComponent<Spawner>();
         setInitialLevelValues();
-        levelNumber = SceneManager.GetActiveScene().buildIndex;
         sceneName = SceneManager.GetActiveScene().name;
     }
 
@@ -144,7 +144,7 @@ public class ScreenController : MonoBehaviour
                     continue;
                 }
                 nextEvent = levelScriptEvent;
-                gameController.StopSpawn();
+                spawner.StopSpawn();
                 if(levelScriptEvent.remove){
                     scriptInfo.events.RemoveAt(x);
                 }
@@ -208,7 +208,7 @@ public class ScreenController : MonoBehaviour
     }
 
     private void StartWave(bool startWave) {
-        if(gameController.spawning || startWaveOverride == "false"){
+        if(spawner.spawning || startWaveOverride == "false"){
             startWaveOverride = null;
             return;
         }
@@ -216,7 +216,6 @@ public class ScreenController : MonoBehaviour
             startWaveOverride = null;
             return;
         }
-        gameController.spawning = true;
-        gameController.StartSpawns();
+        spawner.StartSpawns();
     }
 }

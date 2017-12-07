@@ -1,0 +1,408 @@
+{
+    "eventCollections": [
+        {
+            "events": ["walkLeft", "walkRight", "walkStraight"],
+            "kickoff": "levelEnd"
+        }
+    ],
+    "events": [
+            {
+                "eventType": "event",
+                "kickoff": "levelStart",
+                "skip": true,
+                "startWave": false, 
+                "nextEvent": "walkChoices",
+                "remove": true,
+                "screens":
+                    [
+                        {"character": "Virgil", "text": "So how do you want to bore me today? You doing a sound only version of clicker heros"},                         
+                        {"character": "Suz", "text": "Hearing numbers go up doesn't seem like it would have the same appeal."},
+                        {"character": "Virgil", "text": "So then..."}, 
+                        {"character": "Suz", "text": "Twine."},
+                        {"character": "Virgil", "text": "Twine?"}, 
+                        {"character": "Suz", "text": "I'm a good writer. And I'm not taking advantage of these limitations."},
+                        {"character": "Virgil", "text": "Wut? Being a good writer is a limitation?"},
+                        {"character": "Suz", "text": "No, not having visuals is a limitation."},
+                        {"character": "Virgil", "text": "So.. Um."},
+                        {"character": "Suz", "text": "Just relax and listen; this game is as simple as possible."},
+                        {"character": "Suz", "text": "You're are in the middle of the forest, far from home, far from everything and everyone you've known."},
+                        {"character": "Suz", "text": "You have followed your brother, who left home many days ago. You waited for him."},
+                        {"character": "Suz", "text": "You thought he would return. He promised you he would return. But he has not."},
+                        {"character": "Suz", "text": "Gone, without anymore words, he only told his husband where he was heading."},
+                        {"character": "Suz", "text": "To you it was just to the next town over, but his husband told you."},
+                        {"character": "Suz", "text": "'He has turned to ice, his mind cruel and cold, fingers cutting, ragged. blistered.'"},
+                        {"character": "Suz", "text": "'his heart a clear pond that I cannot see the bottom to. He has journeyed to the forest.'"},
+                        {"character": "Suz", "text": "You are in the middle of the forest. You are searching for your brother. What do you do."},
+                        {"character": "Virgil", "text": "We doing fairytales... What is this choose my own adventure bullshit."},
+                        {"character": "Suz", "text": "You are in the middle of the forest. You are searching for your brother. What do you do."},
+                        {"character": "Virgil", "text": "I don't know Suz, why don't you tell me."},
+                        {"character": "Suz", "text": "You are in the middle of the forest. You are searching for your brother. What do you do."},
+                        {"character": "Virgil", "text": "Fine."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "enterForest",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "lostInDark",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "As you travel down the only path you see the canopy becomes thicker."},
+                        {"character": "Suz", "text": "The light fainter, the earth harder. sounds of all of types fade."},
+                        {"character": "Suz", "text": "Soon you are left with only your own breath. Rasped, heavy, getting faster."},
+                        {"character": "Suz", "text": "You can't hear anything above it. The trees strech taller, the light dissapears."},
+                        {"character": "Suz", "text": "Ice grips your feet through your boots. You can feel your blood slowing from it."}
+                        
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "leaveForest",
+                "skip": false,
+                "nextEvent": "forestEntrance",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "You turn away from the blackness, you head back home to your life, your much smaller life."},
+                        {"character": "Suz", "text": "Your Brother never returns."},
+                        {"character": "Suz", "text": "Your skin cools. The shadows outside your window seems larger."},
+                        {"character": "Suz", "text": "..."},
+                        {"character": "Virgil", "text": "Is that it."},
+                        {"character": "Suz", "text": "Well, I really wasn't expecting you to be such a kill joy."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "thinkAboutBrother",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "thoughtsAboutBrother",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "You try to bring his face to memory."},
+                        {"character": "Suz", "text": "It isn't there. Just an inky blackness where it should be."},
+                        {"character": "Suz", "text": "It's like a space where he used to be."},
+                        {"character": "Suz", "text": "You conjure up a memory and people just seem to drift through where he should be standing."},
+                        {"character": "Suz", "text": "You think of a question you asked him."},
+                        {"character": "Suz", "text": "And you hear someone elses voice."},
+                        {"character": "Suz", "text": "You gaze out at the blackness and wonder why you are there."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "brothersVoice",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "lostInDark",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "You try harder to remember how he sounded."},
+                        {"character": "Suz", "text": "The deep comfort you always felt when he spoke to you."},
+                        {"character": "Suz", "text": "When your parents were too stress, too busy, too broken."},
+                        {"character": "Suz", "text": "He was there, he always was there. It didn't matter what he said, just that he spoke."},
+                        {"character": "Suz", "text": "What was it. Rough and husky. Or was he low and nasely."},
+                        {"character": "Suz", "text": "You try to remember if he liked his own voice when you recorded movies together."},
+                        {"character": "Suz", "text": "You can't remember. And like that. It's gone."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "brothersAction",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "lostInDark",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "You try to remember the time you took your brother fishing."},
+                        {"character": "Suz", "text": "He never liked the outdoors, he was a homebody."},
+                        {"character": "Suz", "text": "He'd rather stay home and read or hang out with his boyfriend. But you wanted this."},
+                        {"character": "Suz", "text": "So he said yes, even though he hated waking up before 10. Even though he was a vegeterian."},
+                        {"character": "Suz", "text": "He did this for you."},
+                        {"character": "Suz", "text": "It was a cloudless day but the lake was murky anyway."},
+                        {"character": "Suz", "text": "You spent ten minutes explaining the best way to throw out a line only for him to ignore all your directions."},
+                        {"character": "Suz", "text": "He refused to put a live worm on the hook, he brought his own carrots."},
+                        {"character": "Suz", "text": "You weren't sure at the time if he did that because of moral reasons or to get you to laugh."},
+                        {"character": "Suz", "text": "You were so sad that summer."},
+                        {"character": "Suz", "text": "But he was there and now he isn't. And you can't seem to remember anymore."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "closeEyes",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "meditationChoice",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "You concentrate on your breath and try not to become overwhelemed."},
+                        {"character": "Suz", "text": "Before you is just blackness."},
+                        {"character": "Suz", "text": "Inches and miles of blackness. You raise your hand and..."},
+                        {"character": "Suz", "text": "You can't tell if you actually lifted it. Or you just had the thought."},
+                        {"character": "Suz", "text": "All you have is your breath and it hurts."},
+                        {"character": "Suz", "text": "It hurts to breath slowly."},
+                        {"character": "Suz", "text": "Like there's a fire in your chest that needs to escape. And every second you try to hold it in."},
+                        {"character": "Suz", "text": "Burning you just a bit deeper. Choking you on invisible smoke"}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "scream",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "meditationChoice",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "You let out such a loud scream that you are sure"},
+                        {"character": "Suz", "text": "if you could see the trees that must be all around you."},
+                        {"character": "Suz", "text": "You'd see them shudder and shake."},
+                        {"character": "Suz", "text": "Their leaves falling from the strength of your sorrow."},
+                        {"character": "Suz", "text": "Cloaking the earth your site."},
+                        {"character": "Suz", "text": "Taking even that connection from you."},
+                        {"character": "Suz", "text": "Leaving even more in this deep blackness"},
+                        {"character": "Suz", "text": "But you voice just echos out among the void. Nothing there. You're nothing."},
+                        {"character": "Virgil", "text": "..."},
+                        {"character": "Suz", "text": "What?"},
+                        {"character": "Virgil", "text": "Is there something going on Girl? This is dark."},
+                        {"character": "Suz", "text": "No, I'm just trying my hand at a modern fairytale."},
+                        {"character": "Virgil", "text": "Sure..."},
+                        {"character": "Suz", "text": "You literally had monsters ripping me limb from limb. Talked about eating my intenstins."},
+                        {"character": "Suz", "text": "But I want to write a story about emotional anguish and because of that I must be dealing with it myself?"},
+                        {"character": "Virgil", "text": "..."},
+                        {"character": "Suz", "text": "Maybe I just find it interesting or cathartic."},
+                        {"character": "Virgil", "text": "Girl the dollar words are tiring. I don't know what cathartic means. But I do know you know I don't know."},
+                        {"character": "Virgil", "text": "I don't know why you keep trying to show off. It's common."},
+                        {"character": "Virgil", "text": "And your brother left for college two months ago. So don't."},
+                        {"character": "Suz", "text": "That has nothing to do with this."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "count",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "counting",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "Go back to the basics."},
+                        {"character": "Suz", "text": "Count the time between the inhale and release."},
+                        {"character": "Suz", "text": "Try to extend it by half a second till it stops being ragged."},
+                        {"character": "Suz", "text": "Till it stops overpowering thought and emotion."},
+                        {"character": "Suz", "text": "You knew you'd face trials."},
+                        {"character": "Suz", "text": "You told him he would."},
+                        {"character": "Suz", "text": "The forest takes everything from you."},
+                        {"character": "Suz", "text": "It's why you go. To clense yourself"},
+                        {"character": "Suz", "text": "To turn your acid in your chest calm."},
+                        {"character": "Suz", "text": "Quell the rage and aches that seem to split your sides."},
+                        {"character": "Suz", "text": "Turn it all into a placid lake you can skip your heart across."},
+                        {"character": "Suz", "text": "And come back the other side changed and solid."},
+                        {"character": "Suz", "text": "Just another breath. Slowly you think."},
+                        {"character": "Suz", "text": "Hold it for an extra second."},
+                        {"character": "Suz", "text": "Give yourself the space to exist, to cry if needed. And then continue on."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "standStill",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "counting",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "In the darkness you wait."},
+                        {"character": "Suz", "text": "You try to see beyond it. But there's nothing."},
+                        {"character": "Suz", "text": "And so you wait."},
+                        {"character": "Suz", "text": "With only the sound of your breath to mark the passage of time."},
+                        {"character": "Suz", "text": "You move your toes just to feel the ground beneath your boots."},
+                        {"character": "Suz", "text": "And nothing is there."},
+                        {"character": "Suz", "text": "In the emptiness, in the directionlesness of it all."},
+                        {"character": "Suz", "text": "What does it matter if you breath."},
+                        {"character": "Suz", "text": "If you blink your eyes, if you take a step"},
+                        {"character": "Suz", "text": "There is nothing, absolutely nothing."},
+                        {"character": "Suz", "text": "Including you."},
+                        {"character": "Suz", "text": "..."},
+                        {"character": "Virgil", "text": "Suz, seriously. What's going on."},
+                        {"character": "Suz", "text": "Nothing is going on."},
+                        {"character": "Virgil", "text": "This is dark."},
+                        {"character": "Suz", "text": "So, I'm you're worried about the people who wrote soma. Why are you worried about me."},
+                        {"character": "Virgil", "text": "Cause I know you."},
+                        {"character": "Suz", "text": "It's a game. Why can't I talk about dark stuff without it meaning I'm broken."},
+                        {"character": "Virgil", "text": "It just seems you're dealing with something."},
+                        {"character": "Suz", "text": "It's called imagination. Learn to use yours."}    
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "run",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "meditationChoice",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "You're a bit calmer, but you don't feel safe."},
+                        {"character": "Suz", "text": "How could one feel safe here. There's no here."},
+                        {"character": "Suz", "text": "So you take a step and then another."},
+                        {"character": "Suz", "text": "Faster and faster."},
+                        {"character": "Suz", "text": "You expect to feel a breeze, to feel something."},
+                        {"character": "Suz", "text": "But there's not even any feeling of progression"},
+                        {"character": "Suz", "text": "Just exertion."},
+                        {"character": "Suz", "text": "You have no idea how long you have been running."},
+                        {"character": "Suz", "text": "Or why you continue. What's the point."},
+                        {"character": "Suz", "text": "Are you trapped, is this your life now. How can you break out."},
+                        {"character": "Suz", "text": "You start to loose your breath again."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "walk",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "walkChoices",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "Standing still would be a mistake."},
+                        {"character": "Suz", "text": "Nobody will come for you."},
+                        {"character": "Suz", "text": "You left in the middle of the night with nothing but your coat."},
+                        {"character": "Suz", "text": "It'll be days before they notice your absence."},
+                        {"character": "Suz", "text": "They barely notice he's gone. Why would they notice yours"},
+                        {"character": "Suz", "text": "Faith is something you know little about but you try to believe that there earth in front of you."},
+                        {"character": "Suz", "text": "And step forward, hoping that it may lead somewhere beyond this."},
+                        {"character": "Suz", "text": "It's so cold, so silent. You begin to miss the ache that breathing brought."},
+                        {"character": "Suz", "text": "There no fire anymore just the option of continue walking"},
+                        {"character": "Suz", "text": "or stoping."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "walkLeft",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "walkChoices",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "You turn towards the left then forward."},
+                        {"character": "Suz", "text": "You try to visualize yourself cutting a white line against the darkness."},
+                        {"character": "Suz", "text": "0,0  0,1, 1,1"},
+                        {"character": "Suz", "text": "Like comet vectors illuminating the night."},
+                        {"character": "Suz", "text": "He loved math so much more then you did."},
+                        {"character": "Suz", "text": "You just wanted to be able to keep perspective at times."},
+                        {"character": "Suz", "text": "He saw beauty in it where you just saw utility."},
+                        {"character": "Suz", "text": "It allowed clarity that you never held."},
+                        {"character": "Suz", "text": "You'd draw a line dictated by points."},
+                        {"character": "Suz", "text": "He drew a truth."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "walkStraight",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "walkChoices",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "You keep going forward."},
+                        {"character": "Suz", "text": "What else can you do."},
+                        {"character": "Suz", "text": "That what he said before he left."},
+                        {"character": "Suz", "text": "I can't stay like this. There is no life like this"},
+                        {"character": "Suz", "text": "There is no life, no joy, just cold."},
+                        {"character": "Suz", "text": "How can I do that to other people."},
+                        {"character": "Suz", "text": "How can I be such an inconvenience."},
+                        {"character": "Suz", "text": "And turn and walked straight out the door."},
+                        {"character": "Suz", "text": "Leaving you and his husband in shock."},
+                        {"character": "Suz", "text": "He seemed fine less then a week ago."},
+                        {"character": "Suz", "text": "What can cause people to change like that."},
+                        {"character": "Suz", "text": "Like a possession of the soul."},
+                        {"character": "Suz", "text": "Possessed you. You're no longer the same."},
+                        {"character": "Suz", "text": "You stared at the earth, drawing lines, wondering what to do for weeks."},
+                        {"character": "Suz", "text": "Not knowing what you have done. What there is to do."},
+                        {"character": "Suz", "text": "Can you really follow him down like this."},
+                        {"character": "Suz", "text": "Should you be following him. Do you not trust him."},
+                        {"character": "Suz", "text": "Can't he fight, why does he need you to fight with him."},
+                        {"character": "Suz", "text": "Would he be happy or furious."},
+                        {"character": "Suz", "text": "But right now, you know he can be neither."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "walkRight",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "walkChoices",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Suz", "text": "You turn towards the right then forward."},
+                        {"character": "Suz", "text": "Why did you really come."},
+                        {"character": "Suz", "text": "Did you think you wiser then him."},
+                        {"character": "Suz", "text": "That you can be a his ledge for once."},
+                        {"character": "Suz", "text": "Someplace he can grasp onto. Rest on."},
+                        {"character": "Suz", "text": "Need"},
+                        {"character": "Suz", "text": "Maybe you were turning cold even before he did."},
+                        {"character": "Suz", "text": "There was a blackhole in the center of the house."},
+                        {"character": "Suz", "text": "You'd curve around in parabolas to avoid even see his door."},
+                        {"character": "Suz", "text": "Soon your Father would turn into a library, or maybe just a guest room."},
+                        {"character": "Suz", "text": "Paint over the cracks, remove the furniture."},
+                        {"character": "Suz", "text": "Seemingly clear everything out so not even the memory could fill the room back up."},
+                        {"character": "Suz", "text": "Maybe you're not even here for him."},
+                        {"character": "Suz", "text": "Maybe it's an excuse. Run from your problems."},
+                        {"character": "Suz", "text": "Put them onto other reasons. Other people."},
+                        {"character": "Suz", "text": "Maybe you like being in darkness."},
+                        {"character": "Suz", "text": "You don't have to face yourself."},
+                        {"character": "Suz", "text": "Deal with anything. Anything could be out there. Everything could be out there."}
+                    ]
+            },
+            {
+                "eventType": "event",
+                "kickoff": "levelEnd",
+                "skip": false,
+                "startWave": false, 
+                "nextEvent": "nextLevel",
+                "remove": false,
+                "screens":
+                    [
+                        {"character": "Virgil", "text": "Okay this is just a mope fest."},
+                        {"character": "Suz", "text": "What?"},
+                        {"character": "Virgil", "text": "Look Suz you write good. But this is just sad."},
+                        {"character": "Suz", "text": "And"},
+                        {"character": "Virgil", "text": "I don't play games to feel sad. I could read a book."},
+                        {"character": "Suz", "text": "When do you read? I'm trying to express something."},
+                        {"character": "Virgil", "text": "Not enough, I mean. I don't want to feel bad."},
+                        {"character": "Suz", "text": "You're not even giving it a chance"},
+                        {"character": "Virgil", "text": "I've given it multiple chances."},
+                        {"character": "Suz", "text": "I just, what do you want me to do."},
+                        {"character": "Virgil", "text": "Make it a game."},
+                        {"character": "Suz", "text": "It is a game."},
+                        {"character": "Virgil", "text": "Fine, make it a fun. Do more then choose your adventure crap."},
+                        {"character": "Suz", "text": "Choose your own adventures are games."},
+                        {"character": "Virgil", "text": "There are sites, books. Why should I do this insane thing in a backyard."},
+                        {"character": "Suz", "text": "I just want to do something impressive. Say something more then look how much fun it is to play this."},
+                        {"character": "Suz", "text": "I just... my brother already has a 100k on youtube. And I'm stuck at 50 people."},
+                        {"character": "Suz", "text": "I just, I just. I'm bored. Everyone in school is boring."},
+                        {"character": "Suz", "text": "I finish my homework on the bus home. My parents are always busy."},
+                        {"character": "Virgil", "text": "Sob stories don't make good games."},
+                        {"character": "Suz", "text": "There was depression quest."},
+                        {"character": "Virgil", "text": "You play so many weird games."},
+                        {"character": "Virgil", "text": "Stop thinking about your self."},
+                        {"character": "Virgil", "text": "Ain't nobody got time for your problems. Game are fun."},
+                        {"character": "Suz", "text": "They can be more then that."},
+                        {"character": "Virgil", "text": "Sure, but they still need to be fun."},
+                        {"character": "Virgil", "text": "I play games to stop thinking about Math at school."},
+                        {"character": "Suz", "text": "You really are bad at math. Ha."},
+                        {"character": "Virgil", "text": "Look I'll keep beta testing things. Beats algebra. But don't ask me to lie."},
+                        {"character": "Suz", "text": "Alright."}
+                    ]
+            }
+        ]
+    }

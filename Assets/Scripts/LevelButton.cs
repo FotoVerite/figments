@@ -5,27 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+public class LevelButton : BaseButton, IPointerEnterHandler {
 
     public Text levelText;
     private Image loadingImage;
     private Slider loadingBar;
     private int LevelToLoad;
-    private bool entered = false;
-    private float counter= 0f;
-    private Color main;
-    private Color highlight;
 
     private bool locked = true;
-
-    Image image;
-    Material mat;
-    void Awake() {
-        image = GetComponent<Image>();
-        mat = Instantiate(image.material);
-        image.material = mat;
-    }
-
     public void setLevel(int level){
         LevelToLoad = level;
         levelText.text = level + "";
@@ -69,36 +56,12 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {   
-        entered= true;
-        counter=0f;
-        Haptic.Heavy();
+        base.OnPointerEnter(eventData);
         if(locked) {
             TTS.StartSpeak("level " + levelText.text + " locked");
         }
         else {
             TTS.StartSpeak("level " + levelText.text);
         }
-    }
-
-    void Update(){
-        Color lerpedColor;
-        lerpedColor = Color.Lerp(main, highlight, Mathf.PingPong(counter, 1));
-        if(lerpedColor == main){
-            counter = 0f;
-        }
-        if(entered){
-            mat.SetColor("_OutlineColor", lerpedColor);
-            counter+=.05f;
-        }
-        else if(!entered && lerpedColor != main){
-            mat.SetColor("_OutlineColor", lerpedColor);
-            counter+=.05f;
-        }
-    }
-
-    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
-    {
-        entered = false;
-        TTS.StopSpeak();
     }
 }

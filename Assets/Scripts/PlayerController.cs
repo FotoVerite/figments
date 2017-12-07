@@ -27,7 +27,8 @@ public class PlayerController : MonoBehaviour {
 	public GameObject shot;
 	public GameObject shield;
 	private GameController gameController;
-	private ScreenController screenController;
+	private ScreenNotifyController screenController;
+	private Spawner spawner;
 	public Transform shotSpawn;
 	
 	public float fireRate;
@@ -44,17 +45,22 @@ public class PlayerController : MonoBehaviour {
 	private AudioSource shieldAudio;
 	private AudioClip shieldRaise;
 	private AudioClip shieldLower;
+	private float shieldTimer = 0;
 
 	private AudioClip playerHit;
+	private GameObject soundListener;
 
 
 	// Use this for initialization
 	void Awake () {
 
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInParent<Rigidbody>();
+		soundListener = transform.parent.gameObject;
         weaponSound = GetComponent<AudioSource>();
-		gameController = GameObject.Find("GameController").GetComponent<GameController>();
-		screenController =  GameObject.Find("GameController").GetComponent<ScreenController>();
+		GameObject gameControllerObject = GameObject.Find("GameController");
+		gameController = gameControllerObject.GetComponent<GameController>();
+		screenController =  gameControllerObject.GetComponent<ScreenNotifyController>();
+		spawner = gameControllerObject.GetComponent<Spawner>();
 		if(shield) {
 			shieldAudio = shield.GetComponent<AudioSource>();
 		}
@@ -72,6 +78,11 @@ public class PlayerController : MonoBehaviour {
 			return;
 		}
 		if(Time.time < nextFire){
+			return;
+		}
+		if(shield.activeSelf == true) {
+			screenController.SetOverrides(gameController.levelEvent,  spawner.spawning ? "true" : "false");
+			gameController.levelEvent = "firedWithShieldRaised";
 			return;
 		}
 		nextFire = Time.time + fireRate;
@@ -92,10 +103,10 @@ public class PlayerController : MonoBehaviour {
 		if(gameController.speaking) {
 			return;
 		}
-		if(Time.time < nextFire){
+		if(Time.time < shieldTimer){
 			return;
 		}
-		nextFire = Time.time + shieldDowntime;
+		shieldTimer = Time.time + shieldDowntime + 5;;
 		
 		shield.SetActive(true);
 		shieldAudio.PlayOneShot(shieldRaise);
@@ -104,7 +115,7 @@ public class PlayerController : MonoBehaviour {
 
 
 	void FixedUpdate()
-	{
+	{	
 		float moveHorizontal;
 		if(gameController.speaking || restrictMovement.Contains(gameController.levelEvent)) {
 			rb.velocity = transform.right * 0;
@@ -118,23 +129,24 @@ public class PlayerController : MonoBehaviour {
 		}
 		float moveVertical = Input.GetAxis("Vertical");
 
-		Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+		Vector3 movement = new Vector3(moveHorizontal, 0.0f, 0f);
 		rb.velocity = movement * speed;
 
-		rb.position = new Vector3
+		Vector3 newPosition = new Vector3
 	   (
 		   Mathf.Clamp(rb.position.x, boundary.xMin, boundary.xMax),
-		   0.0f,
-		   0.0f
+		   0f,
+		   rb.position.z
 	   );
+	  	rb.position = newPosition;
 	   if(rb.position.x == boundary.xMin || rb.position.x == boundary.xMax ){
 			if(Application.platform == RuntimePlatform.IPhonePlayer) {
 		   		Handheld.Vibrate();
       		}
-		   screenController.SetOverrides(gameController.levelEvent,  gameController.spawning ? "true" : "false");
 		   if(!shakeEventFired && !gameController.speaking) {
-			   gameController.levelEvent = "shakeEvent";
-			   shakeEventFired = true;
+				screenController.SetOverrides(gameController.levelEvent,  spawner.spawning ? "true" : "false");
+			   	gameController.levelEvent = "shakeEvent";
+				shakeEventFired = true;
 		   }
 	   }
 
@@ -158,6 +170,7 @@ public class PlayerController : MonoBehaviour {
 
 	IEnumerator shutdownSheild() {
 		yield return new WaitForSeconds(shieldRaise.length);
+		yield return new WaitForSeconds(3);
 		shieldAudio.PlayOneShot(shieldLower);
 		yield return new WaitForSeconds(shieldLower.length);
 		shield.SetActive(false);

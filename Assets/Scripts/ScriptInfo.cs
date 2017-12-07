@@ -4,7 +4,8 @@ using System.Collections.Generic;
 public class ScriptInfo
 {
     public List<LevelScriptEvent> events;
-   
+    public List<LevelScriptEventCollections> eventCollections;
+
 }
 
 [System.Serializable]
@@ -17,6 +18,7 @@ public class LevelScriptEvent {
     public bool startWave;
     public string nextEvent;
     public string skipToEvent;
+    public string music;
     public List<LevelScriptScreens> screens;
 }
 
@@ -27,4 +29,13 @@ public class LevelScriptScreens
     public string character;
     public string text;
     public string sfx;
+
+    public string music;
+    public float musicVolume;
+}
+
+[System.Serializable]
+public class LevelScriptEventCollections {
+    public List<string> events;
+    public string kickoff;
 }

@@ -11,14 +11,15 @@ public class Mover : MonoBehaviour {
     private GameController gameController;
     private AudioSource sound;
 
-    private int tapWait = 0;
+    private float tapWait = 0;
 
     private void Awake()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
+        player = GameObject.FindWithTag("Player").GetComponentInParent<Rigidbody>();
 		gameController = GameObject.Find("GameController").GetComponent<GameController>();
         sound = GetComponent<AudioSource>();
-        float pitch = Random.Range(-3, 3);
+        float[] randomeArray = {Random.Range(-1.25f, -1f), Random.Range(1f, 1.25f)};
+        float pitch =randomeArray[Random.Range(0, randomeArray.Length - 1)];
         if(sound != null){
             if (System.Math.Abs(pitch) > Mathf.Epsilon) {
                 sound.pitch = pitch;
@@ -39,11 +40,11 @@ public class Mover : MonoBehaviour {
         float distance = Vector3.Distance(player.position, transform.position);
         if(sound != null) {
 		    sound.panStereo = AngleDir(player.transform);
-            if(Mathf.Abs(AngleDir(player.transform)) < 0.05f && distance < 5) {
+            if(Mathf.Abs(AngleDir(player.transform)) < 0.2f && distance < 4) {
                 tapLight();
             }
         }
-        tapWait--;
+        tapWait = tapWait - Time.deltaTime;
     }
 
 
@@ -72,7 +73,7 @@ public class Mover : MonoBehaviour {
             return;
         }
         Haptic.Light();
-        tapWait = 10;
+        tapWait = 10f;
     }
 
 

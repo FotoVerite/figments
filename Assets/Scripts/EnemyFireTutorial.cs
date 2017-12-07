@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class EnemyFireTutorial : MonoBehaviour {
 
-	public float speed;
     public GameController gameController;
-    public Rigidbody rb;
-
 	public GameObject shot;
     private AudioSource weaponSound;
 
@@ -16,6 +13,12 @@ public class EnemyFireTutorial : MonoBehaviour {
 
     void Awake(){
         weaponSound = GetComponent<AudioSource>();
+        gameController.NotifyLevelEvent += resetNextFireTime;
+
+    }
+
+    void resetNextFireTime(string levelEvent) {
+        nextFire = Time.time + 2;
     }
 
     void Update(){

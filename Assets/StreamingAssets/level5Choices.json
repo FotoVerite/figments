@@ -1,0 +1,55 @@
+{
+    "events": [
+        {
+            "kickoff": "forestEntrance",
+            "choices": [
+                {"buttonText": "Leave", "eventName": "leaveForest"},
+                {"buttonText": "Head towards the dark forest", "eventName": "enterForest"} 
+            ] 
+        },
+        {
+            "kickoff": "lostInDark",
+            "choices": [
+                {"buttonText": "Close your eyes.", "eventName": "closeEyes"},
+                {"buttonText": "Think about your brother.", "eventName": "thinkAboutBrother"} 
+            ] 
+
+        },
+        {
+            "kickoff": "thoughtsAboutBrother",
+            "choices": [
+                {"buttonText": "Think about your brother's voice.", "eventName": "brothersVoice"},
+                {"buttonText": "Think about something you did with your brother.", "eventName": "brothersAction"} 
+            ] 
+
+        },
+        {
+            "kickoff": "meditationChoice",
+            "choices": [
+                {"buttonText": "Count your breath.", "eventName": "count"},
+                {"buttonText": "Scream.", "eventName": "scream"} 
+            ] 
+
+        },
+        {
+            "kickoff": "counting",
+            "choices": [
+                {"buttonText": "Walk.", "eventName": "walk"},
+                {"buttonText": "Run", "eventName": "run"},
+                {"buttonText": "Stand Still.", "eventName": "standStill"} 
+                
+            ] 
+
+        },
+        {
+            "kickoff": "walkChoices",
+            "choices": [
+                {"buttonText": "Left.", "eventName": "walkLeft"},
+                {"buttonText": "Right", "eventName": "walkRight"},
+                {"buttonText": "Forward", "eventName": "walkStraight"} 
+                
+            ] 
+
+        }
+    ]
+}

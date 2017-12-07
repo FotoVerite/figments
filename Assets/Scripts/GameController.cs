@@ -7,41 +7,39 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject[] hazards;
-    public List<GameObject> instantiateHazards;
     public Vector3 spawnValues;
-
-    public int hazardCount;
-    public bool spawning = false;
-    public float spawnWait;
-    public float startWait;
-    public float waveWait;
-
     public float timer = 85f;
     public Text scoreText;
     public Text timerText;
-    public Text restartText;
     public Text gameOverText;
+
+    public GameObject overlay;
+    public bool debug = true;
     
-    private AudioSource soundPlayer;
     private AudioSource loadingLevelPlayer;
 
-    private ScriptInfo scriptInfo;
+    private Spawner spawner;
+    private Clock clock;
     public GameObject textPanel;
     public GameObject[] interactivePanels;
-    public Text character;
-    public Text chacterSpeech;
 
     private int levelNumber;
     public string levelEvent {
 
         get { return _levelEvent; }
         set {
+            if(_levelEvent == value) {return;}
              _levelEvent = value;
+            if(value == "gameOver"){
+                GameOver();
+            }
+            if(NotifyLevelEvent != null ) {
+                NotifyLevelEvent(_levelEvent);
+            }
         }
     
     }
-    private string _levelEvent;
+    public string _levelEvent;
 
     public bool speaking;
     private bool gameOver;
@@ -49,27 +47,32 @@ public class GameController : MonoBehaviour
     private bool stageComplete;
     private int score;
 
-    private bool fastForward = false;
     private bool loadingNextStage = false;
+
+    public delegate void NotifyLevelEventDelegate(string levelEvent);
+    public event NotifyLevelEventDelegate NotifyLevelEvent;
 
     void Awake()
     {
-        soundPlayer = GetComponents<AudioSource>()[0];
         loadingLevelPlayer = GetComponents<AudioSource>()[1];
+        spawner = GetComponent<Spawner>();
+        clock = GetComponent<Clock>();
         interactivePanels = GameObject.FindGameObjectsWithTag("InteractivePanel");
         setInitialLevelValues();
         levelNumber = SceneManager.GetActiveScene().buildIndex;
         UpdateScore();
-        StartSpawns();
         PlayerPrefs.DeleteAll();
+        GetComponent<ScreenFader>().FadeIn();
     }
 
     void Update()
     {
-        SetClock();
+        if(clock != null) {
+            clock.UpdateClock(speaking || !spawner.spawning || stageComplete);
+        }
         CheckRestart();
         CheckLoadNextLevel();
-        CheckPanels();
+        CheckStageComplete();
     }
 
     void setInitialLevelValues()
@@ -77,71 +80,19 @@ public class GameController : MonoBehaviour
         gameOver = false;
         restart = false;
         stageComplete = false;
-        restartText.text = "";
         gameOverText.text = "";
         score = 0;
         textPanel.SetActive(false);
-        levelEvent = "levelStart";
         speaking = false;
-    }
-
-    void SetClock()
-    {
-        // don't decrement clock if characters are speaking
-        if (speaking || !spawning || stageComplete)
+        foreach (var panel in interactivePanels)
         {
-            return;
-        }
-        timer = timer - Time.deltaTime;
-        string minutes = Mathf.Floor(timer / 60).ToString("00");
-        string seconds = Mathf.Floor(timer % 60).ToString("00");
-        timerText.text = minutes + ":" + seconds;
-        if (timer < float.Epsilon)
-        {
-            stageComplete = true;
-            StageComplete();
+            panel.SetActive(false);
         }
     }
 
-    public void  StartSpawns() {
-        if(speaking || !spawning) {
-            return;
-        }
-        for (int i = 0; i < instantiateHazards.Count; i++)
-        {
-            instantiateHazards[i].GetComponent<Mover>().Continue();
-        }
-        StartCoroutine("SpawnWaves");
-    }
-
-    public void StopSpawn() {
-        spawning = false;
-        StopCoroutine("SpawnWaves");
-        for (int i = 0; i < instantiateHazards.Count; i++)
-        {
-            instantiateHazards[i].GetComponent<Mover>().Pause();
-        }
-    }
-    IEnumerator SpawnWaves()
-    {   
-        yield return new WaitForSeconds(startWait);
-        while (true)
-        {
-            if(speaking) {
-                break;
-            }
-            for (int i = 0; i < hazardCount; i++)
-            {
-                GameObject hazard = hazards[Random.Range(0, hazards.Length)];
-                Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
-                Quaternion spawnRotation = Quaternion.identity;
-                instantiateHazards.Add(Instantiate(hazard, spawnPosition, spawnRotation));
-                yield return new WaitForSeconds(spawnWait);
-            }
-            yield return new WaitForSeconds(waveWait);
-        }
-    }
-
+    public void changeLevelEvent(string name) {
+        levelEvent = name;
+    } 
     public void AddScore(int newScoreValue)
     {
         score += newScoreValue;
@@ -157,14 +108,20 @@ public class GameController : MonoBehaviour
     {
         gameOverText.text = "Game Over!";
         gameOver = true;
-        StopSpawn();
+        spawner.StopSpawn();
         TTS.StartSpeak("Press to Restart");
         restart = true;
     }
 
-    public void StageComplete()
+    public void CheckStageComplete()
     {
-        if(!stageComplete){
+        if(clock == null) {
+            return;
+        }
+        if(clock.timer < float.Epsilon) {
+            stageComplete = true;
+        }
+        else{
             return;
         }
         levelEvent = "levelEnd";
@@ -186,35 +143,32 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void FastForwardScene() {
-        fastForward = true;
-    }
-
     private void CheckLoadNextLevel(){
         if(levelEvent != "nextLevel") {
             return;
         }
+        StartCoroutine("FadeOut");
+    }
+
+    IEnumerator FadeOut() {
+        GetComponent<ScreenFader>().FadeOut();
+        loadingLevelPlayer.Play();
+        yield return new WaitForSeconds(2.5f);
         LoadScene(levelNumber + 1);
     }
 
-    void CheckPanels() {
-        if(speaking){
-            for (int i = 0; i < interactivePanels.Length; i++)
-            {
-             interactivePanels[i].SetActive(false);   
-            }
-            
-        }
-        else{
-          for (int i = 0; i < interactivePanels.Length; i++)
-            {
-             interactivePanels[i].SetActive(true);   
-            }
+    public void setInteractivePanels(bool activeFlag) {
+        for (int i = 0; i < interactivePanels.Length; i++)
+        {
+            interactivePanels[i].SetActive(activeFlag);   
         }
     }
 
     void LoadScene(int index) {
-        loadingLevelPlayer.Play();
         SceneManager.LoadScene(index);
+    }
+
+    public void LightTap() {
+        Haptic.Light();
     }
 }
